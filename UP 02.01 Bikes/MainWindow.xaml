@@ -1,0 +1,51 @@
+﻿<Window x:Class="UP_02._01_Bikes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UP_02._01_Bikes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Icon="pictures/icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource AccentBrush}" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/pictures/icon.ico" Width="50" Height="50" Stretch="Uniform" Margin="0,0,15,0"/>
+
+                <TextBlock Grid.Column="1" Text="Каталог велосипедов" 
+                           FontSize="24" FontWeight="Bold" Foreground="White" 
+                           VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="TbFio" Text="Гость" FontSize="16" 
+                               Foreground="White" VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+                    <Button x:Name="BtnOrders" Content="Заказы" Width="100" Height="35" 
+                            Margin="0,0,10,0" Visibility="Collapsed" Click="BtnOrders_Click"/>
+                    
+                    <Button Content="Выход" Click="BtnExit_Click" Width="100" Height="35"/>
+
+                    <Button x:Name="BtnBack" Content="Назад" Width="100" Height="35" 
+                            Margin="0,0,10,0" Visibility="Collapsed"
+                            Click="BtnBack_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
+
+      
+           
