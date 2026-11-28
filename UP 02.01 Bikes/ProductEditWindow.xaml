@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UP_02._01_Bikes"
         mc:Ignorable="d"
-        Title="ProductEditWindow" Height="450" Width="800">
+        Title="Редактирование товара" Height="450" Width="800">
+
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -39,7 +40,7 @@
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID:" VerticalAlignment="Center"/>
             <TextBox x:Name="TbId" Grid.Row="0" Grid.Column="1" IsReadOnly="True" Visibility="Collapsed"/>
-            
+
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Наименование:" VerticalAlignment="Center"/>
             <TextBox x:Name="TbName" Grid.Row="1" Grid.Column="1"/>
 
@@ -75,5 +76,4 @@
                     Click="BtnDelete_Click" Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
-
 </Window>

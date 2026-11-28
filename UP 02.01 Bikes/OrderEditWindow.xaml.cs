@@ -21,7 +21,6 @@ namespace UP_02._01_Bikes
     public partial class OrderEditWindow : Window
     {
         private Order _order;
-        private Product _product;
         public bool IsSaved { get; private set; } = false;
 
         /// <summary>
@@ -126,16 +125,6 @@ namespace UP_02._01_Bikes
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            bool inOrderProduct = Core.Context.OrderProduct.Any(op => op.ProductID == _product.ID);
-
-            bool inOrderArticul = !string.IsNullOrEmpty(_product.Articul) && Core.Context.Order.Any(o => o.Articul.Contains(_product.Articul));
-
-            if (inOrderProduct || inOrderArticul)
-            {
-                MessageBox.Show("Нельзя удалить товар, который присутствует в заказах.");
-                return;
-            }
-
             var result = MessageBox.Show("Вы уверены, что хотите удалить этот заказ?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
@@ -145,6 +134,7 @@ namespace UP_02._01_Bikes
                     var orderProducts = Core.Context.OrderProduct.Where(op => op.OrderID == _order.ID).ToList();
                     foreach (var op in orderProducts)
                         Core.Context.OrderProduct.Remove(op);
+
                     Core.Context.Order.Remove(_order);
                     Core.Context.SaveChanges();
 

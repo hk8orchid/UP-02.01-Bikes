@@ -129,29 +129,7 @@ namespace UP_02._01_Bikes
 
             try
             {
-                string finalPhotoName = null;
-                if (_newPhotoPath != null)
-                {
-                    if (_product != null && !string.IsNullOrEmpty(_product.Photo) && _product.Photo != "picture.png")
-                    {
-                        string oldPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures", _product.Photo);
-                        if (File.Exists(oldPath))
-                            File.Delete(oldPath);
-                    }
-
-                    finalPhotoName = Path.GetFileName(_newPhotoPath);
-                    string destPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures", finalPhotoName);
-
-                    string destFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures");
-                    if (!Directory.Exists(destFolder))
-                        Directory.CreateDirectory(destFolder);
-
-                    File.Copy(_newPhotoPath, destPath, true);
-                }
-                else if (_product != null)
-                {
-                    finalPhotoName = _product.Photo;
-                }
+                string finalPhotoName = SavePhoto();
 
                 if (_product == null)
                 {
@@ -195,6 +173,31 @@ namespace UP_02._01_Bikes
                 MessageBox.Show($"Ошибка сохранения: {ex.Message}");
             }
             
+        }
+
+        /// <summary>
+        /// Сохраняет фото товара в папку pictures и возвращает имя файла для записи в БД.
+        /// </summary>       
+        private string SavePhoto()
+        {
+            if (_newPhotoPath == null)
+                return _product?.Photo ?? "picture.png";
+
+            if (_product != null && !string.IsNullOrEmpty(_product.Photo)
+                && _product.Photo != "picture.png")
+            {
+                string oldPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures", _product.Photo);
+                if (File.Exists(oldPath))
+                    File.Delete(oldPath);
+            }
+
+            string fileName = Path.GetFileName(_newPhotoPath);
+            string destFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures");
+            Directory.CreateDirectory(destFolder); 
+            string destPath = Path.Combine(destFolder, fileName);
+            File.Copy(_newPhotoPath, destPath, true);
+
+            return fileName;
         }
 
         private void UpdateProductStock(int productId, int newQuantity)

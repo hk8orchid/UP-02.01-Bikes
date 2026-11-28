@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UP_02._01_Bikes"
         mc:Ignorable="d"
-        Title="OrderEditWindow" Height="450" Width="800">
+        Title="Редактирование заказа" Height="450" Width="800">
     
     <Grid Margin="15">
         <Grid.RowDefinitions>

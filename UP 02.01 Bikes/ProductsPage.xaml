@@ -31,7 +31,7 @@
             </ComboBox>
 
             <ComboBox x:Name="CbFilter" Width="200" Height="30"
-                  SelectionChanged="CbFilter_SelectionChanged">
+                      SelectionChanged="CbFilter_SelectionChanged">
                 <ComboBoxItem Content="Все диапазоны скидок"/>
                 <ComboBoxItem Content="0 - 11,99%"/>
                 <ComboBoxItem Content="12 - 18,99%"/>

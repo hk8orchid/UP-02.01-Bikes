@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Icon="pictures/icon.ico">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -33,7 +34,7 @@
 
                     <Button x:Name="BtnOrders" Content="Заказы" Width="100" Height="35" 
                             Margin="0,0,10,0" Visibility="Collapsed" Click="BtnOrders_Click"/>
-                    
+
                     <Button Content="Выход" Click="BtnExit_Click" Width="100" Height="35"/>
 
                     <Button x:Name="BtnBack" Content="Назад" Width="100" Height="35" 
@@ -45,7 +46,4 @@
 
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
-</Window>
-
-      
-           
+</Window>           
